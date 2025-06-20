@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Products</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://market99.com/cdn/shop/articles/5-market-99-eco-friendly-products-for-sustainable-living-market-99.jpg?v=1697004181') ;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      color:rgb(18, 87, 6);
+    }
+
+    /* Carousel */
+    .carousel-container {
+      width: 100%;
+      overflow: hidden;
+      padding: 20px 0;
+      background-color: #e8f5e9;
+    }
+
+    .carousel {
+      display: flex;
+      animation: scroll 20s linear infinite;
+      gap: 20px;
+      padding: 10px;
+    }
+
+    .carousel img {
+      width: 200px;
+      height: 150px;
+      border-radius: 10px;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel img:hover {
+      transform: scale(1.1) rotateY(10deg);
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Product Card Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .product-card {
+      background: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .product-card h2 {
+      margin: 10px 0;
+      font-size: 1.2em;
+    }
+
+    .product-card a {
+      color:rgb(183, 26, 222);
+      text-decoration: none;
+    }
+
+    .product-card p {
+      font-size: 1em;
+      color: #444;
+    }
+
+    .no-products {
+      text-align: center;
+      font-size: 1.1em;
+      color: #888;
+      margin: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Available Products</h1>
+
+  <!-- Featured Carousel -->
+  <div class="carousel-container">
+    <div class="carousel">
+      <img src="https://images.squarespace-cdn.com/content/v1/63dde481bbabc6724d988548/58ba3776-0c42-408e-ad5a-10d5e5a16aaa/_6bb838fb-7b3c-477a-88de-2d94d9d49c37.jpeg" alt="Featured 1">
+      <img src="https://assets.bizclikmedia.net/668/0cadd883d621195d51292e56977bf278:bbc72cab21f8e96f5aeb3c69a07b5211/gettyimages-1317080753.jpg" alt="Featured 2">
+      <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/65/78ce0081ad11e681d7bb31b0a632ef/starry-night.jpg" alt="Featured 3">
+      <img src="https://degqkf7c4iqz7.cloudfront.net/kraftixon/images/product/Carry-Bag.jpg" alt="Featured 4">
+    </div>
+  </div>
+
+  <!-- Product Cards -->
+  <div class="product-grid">
+    {% for product in products %}
+      <div class="product-card">
+        {% if product.image %}
+          <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% else %}
+          <img src="https://via.placeholder.com/250x180?text=No+Image" alt="No Image">
+        {% endif %}
+        <h2><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h2>
+        <p>${{ product.price }}</p>
+      </div>
+    {% empty %}
+      <div class="no-products">No products available right now.</div>
+    {% endfor %}
+  </div>
+</body>
+</html>

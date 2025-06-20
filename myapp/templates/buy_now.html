@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout - {{ product.name }}</title>
+  {% if success %}
+    <meta http-equiv="refresh" content="2;url={% url 'home' %}">
+  {% endif %}
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://www.idfcfirstbank.com/content/dam/idfcfirstbank/images/blog/finance/three-steps-to-get-a-bnpl-account-717x404.jpg') ;
+      padding: 20px;
+    }
+
+    .checkout-container {
+      background: #fff;
+      max-width: 600px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color:rgb(222, 16, 153);
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background:rgb(219, 13, 208);
+      color: white;
+      padding: 12px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #388e3c;
+    }
+
+    .success-message {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      padding: 15px;
+      border: 1px solid #c8e6c9;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="checkout-container">
+    <h2>Checkout - {{ product.name }}</h2>
+
+    {% if success %}
+      <div class="success-message">
+        ✅ Order is placed successfully!<br>
+        Redirecting to home...
+      </div>
+    {% else %}
+      <form method="post">
+        {% csrf_token %}
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" required>
+
+        <label for="address">Shipping Address:</label>
+        <textarea id="address" name="address" rows="3" required></textarea>
+
+        <label for="payment">Payment Details (Card No.):</label>
+        <input type="text" id="payment" name="payment" placeholder="xxxx-xxxx-xxxx-xxxx" required>
+
+        <button type="submit">Place Order</button>
+      </form>
+    {% endif %}
+  </div>
+</body>
+</html>

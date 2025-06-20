@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: url('https://cartum.io/content/images/14/what-to-sell-in-2025-21685176538384.png') ;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      padding: 10px 20px;
+      background: green;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    /* Carousel Styles */
+    .carousel-container {
+      perspective: 1000px;
+      overflow: hidden;
+      width: 80%;
+      margin: 30px auto;
+    }
+
+    .carousel {
+      display: flex;
+      animation: scroll 15s linear infinite;
+      transform-style: preserve-3d;
+    }
+
+    .carousel img {
+      width: 300px;
+      height: 200px;
+      margin: 0 10px;
+      transition: transform 0.5s;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel img:hover {
+      transform: rotateY(20deg) scale(1.1);
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Grid Section */
+    .grid-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      background: #ffffff;
+    }
+
+    .grid-item {
+      background: #e0f7e9;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .grid-item:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+
+    h2 {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Niche Product Store</h1>
+  <p>Explore our unique handmade and eco-friendly products.</p>
+  <a href="{% url 'product_list' %}">Browse Products</a>
+
+  <!-- Carousel Section -->
+  <div class="carousel-container">
+    <div class="carousel">
+      <img src="https://wholesale.dynamicasia.com/v/vspfiles/photos/2533-T01-2.jpg?v-cache=1628179872" alt="Eco Bag">
+      <img src="https://www.radliving.in/cdn/shop/products/rad5062.jpg?v=1663946515" alt="Candle">
+      <img src="https://www.ecoevolution.co/cdn/shop/files/FullSizeRender_79366fa5-ecfd-45fe-9676-df0897bcae0f.jpg?v=1712182032" alt="Bottle">
+      <img src="https://brownliving.in/cdn/shop/files/handmade-bath-soap-eucalyptus-cedarwood-kamarkattu-ecostore-sustainable-body-soap-brown-living-ecl-kkeco-4-646810.jpg?v=1727536875" alt="Soap">
+      <img src="https://suspire.in/cdn/shop/files/recycled-note-books-1_large.jpg?v=1690762239" alt="Notebook">
+    </div>
+  </div>
+
+  <!-- Grid Section -->
+  <h2>Featured Categories</h2>
+  <div class="grid-section">
+    <div class="grid-item">
+      <h3>Handmade Crafts</h3>
+      <p>Beautifully crafted items from skilled artisans.</p>
+    </div>
+    <div class="grid-item">
+      <h3>Eco-Friendly Goods</h3>
+      <p>Reduce your footprint with our green products.</p>
+    </div>
+    <div class="grid-item">
+      <h3>Zero-Waste Kits</h3>
+      <p>Everything you need to start your zero-waste journey.</p>
+    </div>
+    <div class="grid-item">
+      <h3>Upcycled Art</h3>
+      <p>Creative pieces made from recycled materials.</p>
+    </div>
+  </div>
+</body>
+</html>

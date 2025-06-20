@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ product.name }}</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: url('https://www.sisidunia.com/wp-content/uploads/2023/01/find-trending-products-sell-ecommerce.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    h1 {
+      color: #2e7d32;
+    }
+
+    .product-container {
+      background: rgb(248, 249, 250);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #444;
+    }
+
+    .price {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin: 15px 0;
+      color: #1b5e20;
+    }
+
+    .btn-group {
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      margin: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn-cart {
+      background-color: rgb(188, 15, 218);
+      color: white;
+    }
+
+    .btn-cart:hover {
+      background-color: rgb(208, 36, 191);
+    }
+
+    .btn-buy {
+      background-color: rgb(224, 227, 14);
+      color: white;
+    }
+
+    .btn-buy:hover {
+      background-color: #388e3c;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 30px;
+      background: #555;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .back:hover {
+      background: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="product-container">
+    <h1>{{ product.name }}</h1>
+    <p>{{ product.description }}</p>
+    <p class="price">Price: ${{ product.price }}</p>
+
+    {% if product.image %}
+      <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    {% else %}
+      <img src="https://via.placeholder.com/250x250?text=No+Image" alt="No Image">
+    {% endif %}
+
+    <div class="btn-group">
+      <a href="#" class="btn btn-cart">Add to Cart</a>
+    </div>
+
+    <a href="{% url 'product_list' %}" class="back">Back to Products</a>
+    <a href="{% url 'buy_now' product.id %}" class="btn btn-buy">Buy Now</a>
+  </div>
+</body>
+</html>
